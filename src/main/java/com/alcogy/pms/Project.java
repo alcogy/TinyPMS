@@ -15,6 +15,7 @@ public class Project {
   
   @Lob
   private String absolute;
+  private Integer phase;
   private Integer representative;
   
   public Integer getId() {
@@ -39,6 +40,14 @@ public class Project {
 
   public void setAbsolute(String absolute) {
     this.absolute = absolute;
+  }
+
+  public Integer getPhase() {
+    return phase;
+  }
+
+  public void setPhase(Integer phase) {
+    this.phase = phase;
   }
 
   public Integer getRepresentative() {
