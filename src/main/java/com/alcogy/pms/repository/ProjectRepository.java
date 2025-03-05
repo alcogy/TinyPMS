@@ -1,7 +1,7 @@
-package com.alcogy.pms;
+package com.alcogy.pms.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import com.alcogy.pms.Project;
+import com.alcogy.pms.model.Project;
 
 public interface ProjectRepository extends CrudRepository<Project, Integer> {
 } 

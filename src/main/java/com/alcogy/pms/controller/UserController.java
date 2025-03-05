@@ -1,4 +1,4 @@
-package com.alcogy.pms;
+package com.alcogy.pms.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.alcogy.pms.repository.UserRepository;
+import com.alcogy.pms.model.User;
+
 
 @Controller
 @RequestMapping(path="/user")
@@ -28,4 +31,5 @@ public class UserController {
 
     return "saved";
   }
+
 }

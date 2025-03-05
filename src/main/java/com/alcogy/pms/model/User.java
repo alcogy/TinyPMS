@@ -1,4 +1,4 @@
-package com.alcogy.pms;
+package com.alcogy.pms.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
