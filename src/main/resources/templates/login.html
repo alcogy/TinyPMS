@@ -5,10 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project Management System</title>
-  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
-  <h1>Login</h1>
-  <p>koko</p>
+  <div class="login-wrap">
+    <div class="dialog">
+      <h1 class="login-title">Project Management System</h1>
+      <form action="./login" method="post">
+        <div>
+          <label>Email</label>
+          <input type="text" name="email" placeholder="Enter email." class="email">
+        </div>
+        <div>
+          <input type="submit" value="Login">
+        </div>
+      </form>
+      
+    </div>
+    
+  </div>
 </body>
 </html>

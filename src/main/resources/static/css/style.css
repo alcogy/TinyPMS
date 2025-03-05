@@ -1,4 +1,168 @@
+* {
+  box-sizing: border-box;
+}
+html, body {
+  padding: 0;
+  margin: 0;
+}
 body {
-  background-color: #111;
-  color: #eee;
+  background-color: #eee;
+  color: #111;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-wrap {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-wrap .dialog {
+  background-color: #fff;
+  width: 560px;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+}
+.login-wrap .dialog .login-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.login-wrap .dialog form {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+}
+.login-wrap .dialog form label {
+  font-size: 0.92rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4px;
+  color: #444;
+}
+.login-wrap .dialog form .email {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #b2b2b2;
+  border-radius: 6px;
+  font-size: 1rem;
+  height: 48px;
+}
+.login-wrap .dialog form input[type="submit"] {
+  width: 100%;
+  border: 0;
+  background-color: #808;
+  color: #fff;
+  padding: 12px;
+  font-size: 1.1rem;
+  letter-spacing: 1.1px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.login-wrap .dialog form input[type="submit"]:hover {
+  opacity: 0.8;
+}
+
+/* Global Components */
+header.global-header {
+  width: 100%;
+  background-color: #cacaca;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 0 24px;
+}
+header.global-header h1.head-title {
+  margin: 0;
+  line-height: 1;
+  font-size: 1.4rem;
+}
+header.global-header div.sub-menu {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+header.global-header div.sub-menu .user-name {
+  font-weight: bold;
+}
+header.global-header div.sub-menu button.logout {
+  border: 0;
+  background-color: #808;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* Project list */
+.list-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+}
+.project-table {
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse;
+  flex: 1;
+}
+.project-table caption {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 8px;
+}
+.project-table th,
+.project-table td {
+  padding: 16px;
+  border: 1px solid #c5c5c5;
+  text-align: left;
+  white-space: none;
+}
+.project-table th {
+  color: #444;
+}
+.project-table th.fit,
+.project-table td.fit {
+  width: 1%;
+}
+.project-table td.center {
+  text-align: center;
+}
+.project-table td p {
+  margin: 0;
+}
+.project-table td p.title {
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+.project-table td p.absolute {
+  color: #444;
+  white-space: nowrap;
+  overflow: hidden;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  max-width: 500px;
+}
+.project-table td span.phase {
+  padding: 6px 16px;
+  display: block;
+  width: 100%;
+  border-radius: 50px;
+  font-size: 0.9rem;
+}
+span.phase.-col-1 {
+  background-color: rgb(136, 214, 191);
+}
+span.phase.-col-2 {
+  background-color: rgb(218, 178, 117);
 }

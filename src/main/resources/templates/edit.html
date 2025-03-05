@@ -5,9 +5,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project Edit / Create</title>
-  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
-  <h1>Project Edit / Create</h1>
+  <header class="global-header">
+    <h1 class="head-title">Project Management System</h1>
+    <div class="sub-menu">
+      <p class="user-name">Robert McCall</p>
+      <button class="logout">Logout</button>
+    </div>
+  </header>
+  <main>
+    <div>
+      <form action="./project/create" method="post">
+        <div>
+          <label>Title</label>
+          <input type="text" name="title">
+        </div>
+        <div>
+          <label>Absolute</label>
+          <textarea name="absolute"></textarea>
+        </div>
+        <div>
+          <label>Representative</label>
+          <select>
+            <option>Robert McCall</option>
+            <option>John Smith</option>
+            <option>Kathelin Goble</option>
+          </select>
+        </div>
+        <div>
+          <input type="submit" value="CREATE">
+        </div>
+      </form>
+    </div>
+  </main>
 </body>
 </html>
