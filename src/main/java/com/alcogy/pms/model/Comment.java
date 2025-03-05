@@ -1,15 +1,17 @@
 package com.alcogy.pms.model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Lob;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.TemporalType;
+import jakarta.persistence.Temporal;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
+import java.util.Date;
 
 @Entity
-public class Project {
+public class Comment {
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
   @Getter
@@ -18,19 +20,14 @@ public class Project {
 
   @Getter
   @Setter
-  private String title;
-  
-  @Getter
-  @Setter
-  @Lob
-  private String absolute;
+  private String comment;
 
   @Getter
   @Setter
-  private Integer phase;
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date createdDate;
 
   @Getter
   @Setter
-  private Integer representative;
-  
+  private Integer userId;
 }
