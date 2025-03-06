@@ -16,26 +16,21 @@
     </div>
   </header>
   <main>
-    <div>
+    <div class="edit-wrap">
+      <h2>Create Prooject</h2>
       <form action="./project/create" method="post">
-        <div>
-          <label>Title</label>
-          <input type="text" name="title">
-        </div>
-        <div>
-          <label>Absolute</label>
-          <textarea name="absolute"></textarea>
-        </div>
-        <div>
-          <label>Representative</label>
-          <select>
-            <option>Robert McCall</option>
-            <option>John Smith</option>
-            <option>Kathelin Goble</option>
-          </select>
-        </div>
-        <div>
-          <input type="submit" value="CREATE">
+        <div class="form-wrap">
+          <div>
+            <label>Title</label>
+            <input type="text" name="title" placeholder="Enter the project title.">
+          </div>
+          <div>
+            <label>Absolute</label>
+            <textarea name="absolute"></textarea>
+          </div>
+          <div>
+            <input type="submit" value="CREATE">
+          </div>
         </div>
       </form>
     </div>

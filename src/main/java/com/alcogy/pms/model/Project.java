@@ -23,7 +23,7 @@ public class Project {
   @Getter
   @Setter
   @Lob
-  private String absolute;
+  private String content;
 
   @Getter
   @Setter
