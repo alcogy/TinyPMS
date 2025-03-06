@@ -27,34 +27,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr th:each="project: ${projects}">
             <td>
-              <p class="title">Title</p>
-              <div class="absolute-wrap">
-                <p class="absolute">
-                  Absolute string... Absolute string... 
-                  Monday Thesday;
-                  Absolute string... Absolute string... 
-                  Absolute string... Absolute string... 
-                  Absolute string... Absolute string... 
-                  Absolute string... Absolute afewfew... 
-                </p>
+              <p class="title" th:text="${project.title}">Title</p>
+              <div class="content-wrap">
+                <p class="content" th:text="${project.content}">Content</p>
               </div>
             </td>
             <td class="center">
-              <span class="phase -col-1">Working</span>
+              <span class="phase -col-2" th:text="${project.phase}">Working</span>
             </td>
-            <td>Robert McCall</td>
-          </tr>
-          <tr>
-            <td>
-              <p class="title">Title2</p>    
-              <p>Absolute string...</p>
-            </td>
-            <td class="center">
-              <span class="phase -col-2">Estimating</span>
-            </td>
-            <td>John Smith</td>
+            <td th:text="${project.user.name}">User</td>
           </tr>
         </tbody>    
       </table>

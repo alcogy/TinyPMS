@@ -34,7 +34,7 @@ public class UserController {
   public String login(@ModelAttribute Login login, Model model) {
     System.out.println(login.getEmail());
     // TODO Authorization;
-    return "redirect:/users";
+    return "redirect:/projects";
   }
 
   // Logout

@@ -1,10 +1,6 @@
 package com.alcogy.pms.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Lob;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,6 +27,8 @@ public class Project {
 
   @Getter
   @Setter
-  private Integer representative;
+  @ManyToOne
+  @JoinColumn(name = "userId")
+  private User user;
   
 }

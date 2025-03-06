@@ -166,10 +166,10 @@ span.phase.-col-2 {
   font-size: 1.15rem;
   font-weight: bold;
 }
-.project-table td div.absolute-wrap {
+.project-table td div.content-wrap {
   display: flex;
 }
-.project-table td p.absolute {
+.project-table td p.content {
   color: #444;
   width: 1px;
   flex: 1;
