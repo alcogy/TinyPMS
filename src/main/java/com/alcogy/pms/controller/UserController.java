@@ -7,29 +7,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.ui.Model;
 import com.alcogy.pms.repository.UserRepository;
 import com.alcogy.pms.model.User;
-
+import com.alcogy.pms.model.Login;
 
 @Controller
-@RequestMapping(path="/user")
 public class UserController {
   @Autowired
   private UserRepository userRepository;
 
-  @GetMapping(path="/all")
+  @GetMapping(path="/users")
   public @ResponseBody Iterable<User> getAllUsers() {
     return userRepository.findAll();
   }
 
-  @PostMapping(path="/add")
-  public @ResponseBody String addUser(@RequestParam String name, @RequestParam String email) {
-    User u = new User();
-    u.setName(name);
-    u.setEmail(email);
-    userRepository.save(u);
-
-    return "saved";
+  // Login View
+  @GetMapping("/login")
+  public String login(Model model) {
+    return "login";
   }
+
+  // Login
+  @PostMapping("/login")
+  public String login(@ModelAttribute Login login, Model model) {
+    System.out.println(login.getEmail());
+    // TODO Authorization;
+    return "redirect:/users";
+  }
+
+  // Logout
 
 }

@@ -8,24 +8,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.Model;
 import com.alcogy.pms.model.Project;
 import com.alcogy.pms.repository.ProjectRepository;
 import java.util.Optional;
 
 @Controller
-@RequestMapping(path="/project")
 public class ProjectController {
   @Autowired
   private ProjectRepository projectRepository;
 
-  @GetMapping(path="/")
-  public @ResponseBody Iterable<Project> getAllProjects() {
-    return projectRepository.findAll();
+  @GetMapping("/projects")
+  public String list(Model model) {
+    return "list";
+  }
+  
+  @GetMapping(path="/project/{id}")
+  public String detail(@PathVariable(value="id") final String id, Model model) {
+    // Optional<Project> project = projectRepository.findById(Integer.parseInt(id));
+    return "detail";
   }
 
-  @GetMapping(path="/{id}")
-  public @ResponseBody Optional<Project> getProjectById(@PathVariable(value="id") final String id) {
-    return projectRepository.findById(Integer.parseInt(id));
+  @GetMapping("/project/create/")
+  public String create(Model model) {
+    return "edit";
   }
-
+  
 }
