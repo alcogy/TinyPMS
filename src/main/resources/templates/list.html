@@ -37,7 +37,7 @@
               </div>
             </td>
             <td class="center">
-              <span class="phase -col-1" th:text="${project.phase}">Working</span>
+              <span th:class="'phase -col-' + ${project.phase.id}" th:text="${project.phase.label}">Working</span>
             </td>
             <td th:text="${project.user.name}">User</td>
           </tr>

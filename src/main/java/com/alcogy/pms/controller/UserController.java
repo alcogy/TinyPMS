@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.ui.Model;
 import com.alcogy.pms.repository.UserRepository;
-import com.alcogy.pms.model.User;
+import com.alcogy.pms.entity.User;
 import com.alcogy.pms.model.Login;
 
 @Controller

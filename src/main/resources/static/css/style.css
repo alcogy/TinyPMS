@@ -89,6 +89,10 @@ header.global-header h1.head-title {
   line-height: 1;
   font-size: 1.4rem;
 }
+header.global-header h1.head-title a {
+  text-decoration: none;
+  color: #000;
+}
 header.global-header div.sub-menu {
   display: flex;
   gap: 32px;
@@ -113,12 +117,19 @@ span.phase {
   border-radius: 50px;
   font-size: 0.9rem;
   color: #fff;
+  background-color: #555;
 }
 span.phase.-col-1 {
   background-color: rgb(39, 134, 106);
 }
 span.phase.-col-2 {
   background-color: rgb(133, 83, 8);
+}
+span.phase.-col-3 {
+  background-color: rgb(39, 84, 166);
+}
+span.phase.-col-4 {
+  background-color: rgb(200, 60, 12);
 }
 
 /* Project list */
@@ -188,9 +199,14 @@ span.phase.-col-2 {
 
 /* Detail */
 div.detail-wrap {
-  margin: 56px auto 108px auto;
+  margin: 40px auto 108px auto;
   width: 100%;
   max-width: 1024px;
+}
+div.detail-wrap p {
+  margin: 0 0 8px 0;
+}
+div.detail-wrap div.main-board {
   background-color: #fafafa;
   padding: 32px;
   border-radius: 8px;

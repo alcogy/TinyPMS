@@ -8,41 +8,40 @@
   <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
-  <header class="global-header">
-    <h1 class="head-title">Project Management System</h1>
-    <div class="sub-menu">
-      <p class="user-name">Robert McCall</p>
-      <button class="logout">Logout</button>
-    </div>
-  </header>
+  <header th:replace="fragments/header :: header"></header>
   <main>
     <div class="detail-wrap">
-      <p class="detail-title" th:text="${project.title}">Project Title</p>
-      <div class="detail-sub">
-        <div th:text="${project.user.name} + ' | ' + ${#dates.format(project.createdDate, 'yyyy/MM/dd')}">
-            Robert McCall | 2025/02/15
+      <p>
+        <a th:href=@{/projects}>&lt; Back</a>
+      </p>
+      <div class="main-board">
+        <p class="detail-title" th:text="${project.title}">Project Title</p>
+        <div class="detail-sub">
+          <div th:text="${project.user.name} + ' | ' + ${#dates.format(project.createdDate, 'yyyy/MM/dd')}">
+              Robert McCall | 2025/02/15
+          </div>
+          <div>
+            <span th:class="'phase -col-' + ${project.phase.id}" th:text="${project.phase.label}">Working</span>
+          </div>
         </div>
-        <div>
-          <span class="phase -col-1">Working</span>
+        
+        <div class="detail-content" th:utext="${#strings.replace(project.content, '\n', '<br>')}">
+          content text.
+        </div>
+        <div class="comment-wrap">
+          <p class="comment-title">Comments</p>
+          <ul class="comment-list">
+            <li th:each="comment: ${comments}">
+              <div class="comment" th:text="${comment.comment}">This is awesome project!</div>
+              <p class="comment-written" th:text="${comment.user.name} + ' | ' + ${#dates.format(comment.createdDate, 'yyyy/MM/dd HH:mm')}">John Smith | 2025/03/01 12:34</p>
+            </li>
+          </ul>
         </div>
       </div>
-      
-      <div class="detail-content" th:utext="${#strings.replace(project.content, '\n', '<br />')}">
-        content text.
+      <div class="commit-comment-wrap">
+        <input type="text" name="comment" placeholder="Enter your comment.">
+        <button type="button">SUBMIT</button>
       </div>
-      <div class="comment-wrap">
-        <p class="comment-title">Comments</p>
-        <ul class="comment-list">
-          <li th:each="comment: ${comments}">
-            <div class="comment" th:text="${comment.comment}">This is awesome project!</div>
-            <p class="comment-written" th:text="${comment.user.name} + ' | ' + ${#dates.format(comment.createdDate, 'yyyy/MM/dd HH:mm')}">John Smith | 2025/03/01 12:34</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="commit-comment-wrap">
-      <input type="text" name="comment" placeholder="Enter your comment.">
-      <button type="button">SUBMIT</button>
     </div>
   </main>
 </body>

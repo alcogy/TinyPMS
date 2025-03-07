@@ -1,4 +1,4 @@
-package com.alcogy.pms.model;
+package com.alcogy.pms.entity;
 
 import java.util.Date;
 
@@ -25,7 +25,9 @@ public class Project {
 
   @Getter
   @Setter
-  private Integer phase;
+  @ManyToOne
+  @JoinColumn(name = "phaseId")
+  private Phase phase;
 
   @Getter
   @Setter

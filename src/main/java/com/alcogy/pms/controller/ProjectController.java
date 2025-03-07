@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.ui.Model;
-import com.alcogy.pms.model.Project;
+
+import com.alcogy.pms.entity.Project;
 import com.alcogy.pms.model.PostProject;
 import com.alcogy.pms.repository.CommentRepository;
 import com.alcogy.pms.repository.ProjectRepository;
