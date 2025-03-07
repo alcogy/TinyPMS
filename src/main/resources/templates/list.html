@@ -29,13 +29,15 @@
         <tbody>
           <tr th:each="project: ${projects}">
             <td>
-              <p class="title" th:text="${project.title}">Title</p>
+              <p class="title">
+                <a th:href="@{'/project/'+${project.id}}" th:text="${project.title}">Title</a>
+              </p>
               <div class="content-wrap">
                 <p class="content" th:text="${project.content}">Content</p>
               </div>
             </td>
             <td class="center">
-              <span class="phase -col-2" th:text="${project.phase}">Working</span>
+              <span class="phase -col-1" th:text="${project.phase}">Working</span>
             </td>
             <td th:text="${project.user.name}">User</td>
           </tr>

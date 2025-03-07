@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.Date;
@@ -26,8 +28,16 @@ public class Comment {
   @Setter
   @Temporal(TemporalType.TIMESTAMP)
   private Date createdDate;
+    
+  @Getter
+  @Setter
+  @ManyToOne
+  @JoinColumn(name = "projectId")
+  private Project project;
 
   @Getter
   @Setter
-  private Integer userId;
+  @ManyToOne
+  @JoinColumn(name = "userId")
+  private User user;
 }

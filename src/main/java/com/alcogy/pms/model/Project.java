@@ -1,5 +1,7 @@
 package com.alcogy.pms.model;
 
+import java.util.Date;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,5 +32,9 @@ public class Project {
   @ManyToOne
   @JoinColumn(name = "userId")
   private User user;
-  
+
+  @Getter
+  @Setter
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date createdDate;
 }

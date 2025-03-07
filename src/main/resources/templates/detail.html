@@ -17,9 +17,9 @@
   </header>
   <main>
     <div class="detail-wrap">
-      <p class="detail-title">Project Title</p>
+      <p class="detail-title" th:text="${project.title}">Project Title</p>
       <div class="detail-sub">
-        <div>
+        <div th:text="${project.user.name} + ' | ' + ${#dates.format(project.createdDate, 'yyyy/MM/dd')}">
             Robert McCall | 2025/02/15
         </div>
         <div>
@@ -27,26 +27,15 @@
         </div>
       </div>
       
-      <div class="detail-content">
-        content text.content text.content text.content text.content text.
-        content text.content text.content text.content text.content text.
-        content text.content text.content text.content text.content text.<br><br>
-        content text.content text.content text.content text.content text.
-        content text.content text.content text.content text.content text.
-        content text.content text.content text.content text.content text.
-        content text.content text.content text.content text.content text.
-        content text.content text.content text.content text.content text.
+      <div class="detail-content" th:utext="${#strings.replace(project.content, '\n', '<br />')}">
+        content text.
       </div>
       <div class="comment-wrap">
         <p class="comment-title">Comments</p>
         <ul class="comment-list">
-          <li>
-            <div class="comment">This is awesome project!</div>
-            <p class="comment-written">John Smith | 2025/03/01 12:34</p>
-          </li>
-          <li>
-            <div class="comment">Great!</div>
-            <p class="comment-written">John Smith | 2025/03/01 12:34</p>
+          <li th:each="comment: ${comments}">
+            <div class="comment" th:text="${comment.comment}">This is awesome project!</div>
+            <p class="comment-written" th:text="${comment.user.name} + ' | ' + ${#dates.format(comment.createdDate, 'yyyy/MM/dd HH:mm')}">John Smith | 2025/03/01 12:34</p>
           </li>
         </ul>
       </div>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.ui.Model;
 import com.alcogy.pms.model.Project;
 import com.alcogy.pms.model.PostProject;
+import com.alcogy.pms.repository.CommentRepository;
 import com.alcogy.pms.repository.ProjectRepository;
 import java.util.Optional;
 
@@ -16,6 +17,9 @@ import java.util.Optional;
 public class ProjectController {
   @Autowired
   private ProjectRepository projectRepository;
+
+  @Autowired
+  private CommentRepository commentRepository;
 
   @GetMapping("/projects")
   public String list(Model model) {
@@ -25,12 +29,14 @@ public class ProjectController {
   }
   
   @GetMapping(path="/project/{id}")
-  public String detail(@PathVariable(value="id") final String id, Model model) {
-    Optional<Project> project = projectRepository.findById(Integer.parseInt(id));
+  public String detail(@PathVariable(value="id") final String pid, Model model) {
+    Integer id = Integer.parseInt(pid);
+    Optional<Project> project = projectRepository.findById(id);
     if (!project.isPresent()) {
       return "redirect:/projects";
     }
-    model.addAttribute("projects", project.get());
+    model.addAttribute("project", project.get());
+    model.addAttribute("comments", commentRepository.findByProjectIdOrderByCreatedDateDesc(id));
     return "detail";
   }
 

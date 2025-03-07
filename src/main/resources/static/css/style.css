@@ -166,6 +166,14 @@ span.phase.-col-2 {
   font-size: 1.15rem;
   font-weight: bold;
 }
+.project-table td p.title a {
+  color: #000;
+  text-decoration: none;
+}
+.project-table td p.title a:hover {
+  color: #333;
+  text-decoration: underline;
+}
 .project-table td div.content-wrap {
   display: flex;
 }
