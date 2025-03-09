@@ -12,6 +12,8 @@ import com.alcogy.pms.entity.Project;
 import com.alcogy.pms.model.PostProject;
 import com.alcogy.pms.repository.CommentRepository;
 import com.alcogy.pms.repository.ProjectRepository;
+
+import java.util.Date;
 import java.util.Optional;
 
 @Controller
@@ -48,11 +50,14 @@ public class ProjectController {
   
   @GetMapping("/project/edit/{id}")
   public String edit(@PathVariable(value="id") final String id, Model model) {
+    Optional<Project> project = projectRepository.findById(Integer.parseInt(id));
+    model.addAttribute("project", project);
     return "edit";
   }
 
-  @PostMapping("project/create")
-  public String create(@ModelAttribute PostProject post, Model model) {
+  @PostMapping("/project/create")
+  public String create(@ModelAttribute("formModel") PostProject post) {
+    projectRepository.saveAndFlush(post.convertProject());
     return "redirect:/projects";
   }
   

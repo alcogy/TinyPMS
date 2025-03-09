@@ -11,10 +11,10 @@
   <div class="login-wrap">
     <div class="dialog">
       <h1 class="login-title">Project Management System</h1>
-      <form action="./login" method="post">
+      <form action="./login" method="post" th:object="${formModel}">
         <div>
           <label>Email</label>
-          <input type="text" name="email" placeholder="Enter email." class="email">
+          <input type="text" name="email" placeholder="Enter email." class="email" th:value="*{email}" required>
         </div>
         <div>
           <input type="submit" value="Login">

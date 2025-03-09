@@ -10,14 +10,17 @@ import lombok.Setter;
 public class Project {
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
+  @Column
   @Getter
   @Setter
   private Integer id;
 
+  @Column(nullable = false)
   @Getter
   @Setter
   private String title;
   
+  @Column(nullable = false)
   @Getter
   @Setter
   @Lob
@@ -26,15 +29,16 @@ public class Project {
   @Getter
   @Setter
   @ManyToOne
-  @JoinColumn(name = "phaseId")
+  @JoinColumn(name = "phaseId", nullable = false)
   private Phase phase;
 
   @Getter
   @Setter
   @ManyToOne
-  @JoinColumn(name = "userId")
+  @JoinColumn(name = "userId", nullable = false)
   private User user;
 
+  @Column(nullable = false)
   @Getter
   @Setter
   @Temporal(TemporalType.TIMESTAMP)
