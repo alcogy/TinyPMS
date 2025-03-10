@@ -290,7 +290,7 @@ div.commit-comment-wrap input[type="text"] {
   width: 560px;
   font-size: 0.9rem;
 }
-div.commit-comment-wrap button {
+div.commit-comment-wrap input[type="submit"] {
   border: 0;
   background-color: #808;
   color: #fff;

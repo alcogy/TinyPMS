@@ -8,13 +8,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.ui.Model;
 
+import com.alcogy.pms.entity.Comment;
 import com.alcogy.pms.entity.Project;
+import com.alcogy.pms.model.PostComment;
 import com.alcogy.pms.model.PostProject;
 import com.alcogy.pms.repository.CommentRepository;
 import com.alcogy.pms.repository.ProjectRepository;
 
 import java.util.Date;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 public class ProjectController {
@@ -60,5 +64,13 @@ public class ProjectController {
     projectRepository.saveAndFlush(post.convertProject());
     return "redirect:/projects";
   }
+
+  @PostMapping("/project/comment")
+  public String postComment(@ModelAttribute("formModel") PostComment postComment) {
+    Comment comment = postComment.convertComment(1);
+    commentRepository.saveAndFlush(comment);
+    return "redirect:/project/" + postComment.getProjectId();
+  }
+  
   
 }
