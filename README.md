@@ -1,5 +1,5 @@
-# Bushmills
-Bushmills is a project management system build by Spring/Java
+# Whistler
+Whistler is a project management system build by Spring/Java
 
 
 ## Specific
