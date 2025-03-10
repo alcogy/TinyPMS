@@ -8,13 +8,7 @@
   <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}">
 </head>
 <body>
-  <header class="global-header">
-    <h1 class="head-title">Project Management System</h1>
-    <div class="sub-menu">
-      <p class="user-name">Robert McCall</p>
-      <button class="logout">Logout</button>
-    </div>
-  </header>
+  <header th:replace="fragments/header :: header"></header>
   <main>
     <div class="edit-wrap">
       <h2 th:text="${title}"></h2>
