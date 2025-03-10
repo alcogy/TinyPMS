@@ -1,5 +1,5 @@
-# ProjectManagementSystem
-Project Management System builds by Java / Spring boot
+# Bushmills
+Bushmills is a project management system build by Spring/Java
 
 
 ## Specific
