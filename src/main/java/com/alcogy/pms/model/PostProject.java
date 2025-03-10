@@ -12,20 +12,31 @@ import lombok.Setter;
 public class PostProject {
   @Getter
   @Setter
+  private String id; 
+
+  @Getter
+  @Setter
   private String title;
   
   @Getter
   @Setter
   private String content;
 
+  @Getter
+  @Setter
+  private String phaseId;
+
   public Project convertProject() {
     Project project = new Project();
     project.setTitle(title);
     project.setContent(content);
     project.setCreatedDate(new Date());
+    if (id != null && id != "") {
+      project.setId(Integer.parseInt(id));
+    }
 
     Phase phase = new Phase();
-    phase.setId(1);
+    phase.setId(Integer.parseInt(phaseId));
     project.setPhase(phase);
 
     User user = new User();

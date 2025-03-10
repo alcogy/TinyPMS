@@ -344,6 +344,11 @@ div.edit-wrap form div.form-wrap > div textarea {
   font-size: 0.9rem;
   line-height: 1.4;
 }
+div.edit-wrap form div.form-wrap > div select.phase {
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  padding: 12px;
+}
 div.edit-wrap form div.form-wrap > div input[type="submit"] {
   background-color: #808;
   border: 0;
