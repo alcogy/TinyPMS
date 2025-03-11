@@ -1,5 +1,7 @@
 package com.alcogy.pms.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,15 +15,22 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alcogy.pms.repository.UserRepository;
 import com.alcogy.pms.entity.User;
 import com.alcogy.pms.model.Login;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
   @Autowired
   private UserRepository userRepository;
 
-  @GetMapping(path="/users")
-  public @ResponseBody Iterable<User> getAllUsers() {
-    return userRepository.findAll();
+  // Login View
+  @GetMapping("/")
+  public String index(HttpSession session) {
+    User loginUser = (User) session.getAttribute("user");
+    if (loginUser == null) {
+      return "redirect:/login";
+    }
+
+    return "redirect:/projects";
   }
 
   // Login View
@@ -33,12 +42,18 @@ public class UserController {
 
   // Login
   @PostMapping("/login")
-  public String login(@ModelAttribute("formModel") Login login) {
-    System.out.println(login.getEmail());
-    // TODO Authorization;
+  public String login(@ModelAttribute("formModel") Login login, HttpSession session) {
+    Optional<User> user = userRepository.findByEmail(login.getEmail());
+    if (!user.isPresent()) return "redirect:/login?error";   
+    
+    session.setAttribute("user", user.get());
     return "redirect:/projects";
   }
 
   // Logout
-
+  @PostMapping("/logout")
+  public String logout(HttpSession session) {
+    session.removeAttribute("user");
+    return "redirect:/login";
+  }
 }

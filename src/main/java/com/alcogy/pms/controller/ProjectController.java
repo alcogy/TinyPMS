@@ -12,15 +12,17 @@ import org.springframework.ui.Model;
 import com.alcogy.pms.entity.Comment;
 import com.alcogy.pms.entity.Phase;
 import com.alcogy.pms.entity.Project;
+import com.alcogy.pms.entity.User;
 import com.alcogy.pms.model.PostComment;
 import com.alcogy.pms.model.PostProject;
 import com.alcogy.pms.repository.CommentRepository;
 import com.alcogy.pms.repository.PhaseRepository;
 import com.alcogy.pms.repository.ProjectRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.Phaser;
 
 @Controller
 public class ProjectController {
@@ -34,26 +36,38 @@ public class ProjectController {
   private PhaseRepository phaseRepository;
 
   @GetMapping("/projects")
-  public String list(Model model) {
-    model.addAttribute("projects", projectRepository.findAll());
+  public ModelAndView list(ModelAndView mav, HttpSession session) {
+    User loginUser = (User) session.getAttribute("user");
+    if (loginUser == null) return new ModelAndView("redirect:/login");
 
-    return "list";
+    mav.addObject("projects", projectRepository.findAll());
+    mav.setViewName("list");    
+    return mav;
   }
   
   @GetMapping(path="/project/{id}")
-  public String detail(@PathVariable(value="id") final String pid, Model model) {
+  public ModelAndView detail(@PathVariable(value="id") final String pid, ModelAndView mav, HttpSession session) {
+    User loginUser = (User) session.getAttribute("user");
+    if (loginUser == null) return new ModelAndView("redirect:/login");
+
     Integer id = Integer.parseInt(pid);
     Optional<Project> project = projectRepository.findById(id);
     if (!project.isPresent()) {
-      return "redirect:/projects";
+      mav.setViewName("redirect:/projects");
+      return mav;
     }
-    model.addAttribute("project", project.get());
-    model.addAttribute("comments", commentRepository.findByProjectIdOrderByCreatedDateDesc(id));
-    return "detail";
+
+    mav.addObject("project", project.get());
+    mav.addObject("comments", commentRepository.findByProjectIdOrderByCreatedDateDesc(id));
+    mav.setViewName("detail");
+    return mav;
   }
 
   @GetMapping("/project/create")
-  public ModelAndView register(ModelAndView mav) {
+  public ModelAndView register(ModelAndView mav, HttpSession session) {
+    User loginUser = (User) session.getAttribute("user");
+    if (loginUser == null) return new ModelAndView("redirect:/login");
+
     List<Phase> phases = phaseRepository.findAll();
     mav.addObject("phases", phases);
     mav.addObject("project", new Project());
@@ -64,7 +78,10 @@ public class ProjectController {
   }
   
   @GetMapping("/project/edit/{id}")
-  public ModelAndView edit(@PathVariable(value="id") final String id, ModelAndView mav) {
+  public ModelAndView edit(@PathVariable(value="id") final String id, ModelAndView mav, HttpSession session) {
+    User loginUser = (User) session.getAttribute("user");
+    if (loginUser == null) return new ModelAndView("redirect:/login");
+
     Optional<Project> project = projectRepository.findById(Integer.parseInt(id));
     List<Phase> phases = phaseRepository.findAll();
     mav.addObject("phases", phases);
@@ -76,7 +93,10 @@ public class ProjectController {
   }
 
   @PostMapping("/project/create")
-  public String create(@ModelAttribute("formModel") PostProject post) {
+  public String create(@ModelAttribute("formModel") PostProject post, HttpSession session) {
+    User loginUser = (User) session.getAttribute("user");
+    if (loginUser == null) return "redirect:/login";
+
     projectRepository.saveAndFlush(post.convertProject());
     return "redirect:/projects";
   }
@@ -84,18 +104,24 @@ public class ProjectController {
   @PostMapping("/project/edit/{id}")
   public String edit(
     @PathVariable(value="id") final String id,
-    @ModelAttribute("formModel") PostProject post
+    @ModelAttribute("formModel") PostProject post,
+    HttpSession session
   ) {
+    User loginUser = (User) session.getAttribute("user");
+    if (loginUser == null) return "redirect:/login";
+
     projectRepository.saveAndFlush(post.convertProject());
     return "redirect:/projects";
   }
 
   @PostMapping("/project/comment")
-  public String postComment(@ModelAttribute("formModel") PostComment postComment) {
+  public String postComment(@ModelAttribute("formModel") PostComment postComment, HttpSession session) {
+    User loginUser = (User) session.getAttribute("user");
+    if (loginUser == null) return "redirect:/login";
+
     Comment comment = postComment.convertComment(1);
     commentRepository.saveAndFlush(comment);
     return "redirect:/project/" + postComment.getProjectId();
   }
-  
   
 }

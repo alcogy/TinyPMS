@@ -2,6 +2,8 @@
   <h1 class="head-title"><a th:href="@{/projects}">Whistler</a></h1>
   <div class="sub-menu">
     <p class="user-name">Robert McCall</p>
-    <button class="logout">Logout</button>
+    <form action="/logout" method="POST">
+      <button type="submit" class="logout">Logout</button>
+    </form>
   </div>
 </header>
