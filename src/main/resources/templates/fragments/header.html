@@ -1,7 +1,7 @@
 <header class="global-header">
   <h1 class="head-title"><a th:href="@{/projects}">Whistler</a></h1>
   <div class="sub-menu">
-    <p class="user-name">Robert McCall</p>
+    <p class="user-name" th:text="${userName}"></p>
     <form action="/logout" method="POST">
       <button type="submit" class="logout">Logout</button>
     </form>

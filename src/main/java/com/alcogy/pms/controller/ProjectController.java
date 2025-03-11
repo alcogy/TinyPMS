@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.ui.Model;
 
 import com.alcogy.pms.entity.Comment;
 import com.alcogy.pms.entity.Phase;
@@ -39,6 +38,7 @@ public class ProjectController {
   public ModelAndView list(ModelAndView mav, HttpSession session) {
     User loginUser = (User) session.getAttribute("user");
     if (loginUser == null) return new ModelAndView("redirect:/login");
+    mav.addObject("userName", loginUser.getName());
 
     mav.addObject("projects", projectRepository.findAll());
     mav.setViewName("list");    
@@ -49,6 +49,7 @@ public class ProjectController {
   public ModelAndView detail(@PathVariable(value="id") final String pid, ModelAndView mav, HttpSession session) {
     User loginUser = (User) session.getAttribute("user");
     if (loginUser == null) return new ModelAndView("redirect:/login");
+    mav.addObject("userName", loginUser.getName());
 
     Integer id = Integer.parseInt(pid);
     Optional<Project> project = projectRepository.findById(id);
@@ -67,6 +68,7 @@ public class ProjectController {
   public ModelAndView register(ModelAndView mav, HttpSession session) {
     User loginUser = (User) session.getAttribute("user");
     if (loginUser == null) return new ModelAndView("redirect:/login");
+    mav.addObject("userName", loginUser.getName());
 
     List<Phase> phases = phaseRepository.findAll();
     mav.addObject("phases", phases);
@@ -81,6 +83,7 @@ public class ProjectController {
   public ModelAndView edit(@PathVariable(value="id") final String id, ModelAndView mav, HttpSession session) {
     User loginUser = (User) session.getAttribute("user");
     if (loginUser == null) return new ModelAndView("redirect:/login");
+    mav.addObject("userName", loginUser.getName());
 
     Optional<Project> project = projectRepository.findById(Integer.parseInt(id));
     List<Phase> phases = phaseRepository.findAll();

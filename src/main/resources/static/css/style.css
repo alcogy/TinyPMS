@@ -213,6 +213,19 @@ span.phase.-col-4 {
   display: flex;
   gap: 8px;
 }
+.project-table td div.actions a,
+.project-table td div.actions button {
+  border: 0;
+  background-color: #d9d9d9;
+  color: #111;
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.project-table td div.actions a:hover {
+  opacity: 0.8;
+}
 
 /* Detail */
 div.detail-wrap {
