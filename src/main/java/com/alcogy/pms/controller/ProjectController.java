@@ -101,7 +101,7 @@ public class ProjectController {
     User loginUser = (User) session.getAttribute("user");
     if (loginUser == null) return "redirect:/login";
 
-    projectRepository.saveAndFlush(post.convertProject());
+    projectRepository.saveAndFlush(post.convertProject(loginUser.getId()));
     return "redirect:/projects";
   }
 
@@ -114,7 +114,7 @@ public class ProjectController {
     User loginUser = (User) session.getAttribute("user");
     if (loginUser == null) return "redirect:/login";
 
-    projectRepository.saveAndFlush(post.convertProject());
+    projectRepository.saveAndFlush(post.convertProject(loginUser.getId()));
     return "redirect:/projects";
   }
 
@@ -123,7 +123,7 @@ public class ProjectController {
     User loginUser = (User) session.getAttribute("user");
     if (loginUser == null) return "redirect:/login";
 
-    Comment comment = postComment.convertComment(1);
+    Comment comment = postComment.convertComment(loginUser.getId());
     commentRepository.saveAndFlush(comment);
     return "redirect:/project/" + postComment.getProjectId();
   }

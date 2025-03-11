@@ -26,7 +26,7 @@ public class PostProject {
   @Setter
   private String phaseId;
 
-  public Project convertProject() {
+  public Project convertProject(Integer userId) {
     Project project = new Project();
     project.setTitle(title);
     project.setContent(content);
@@ -40,7 +40,7 @@ public class PostProject {
     project.setPhase(phase);
 
     User user = new User();
-    user.setId(1);
+    user.setId(userId);
     project.setUser(user);
 
     return project;
