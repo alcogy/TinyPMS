@@ -1,6 +1,8 @@
 package com.alcogy.pms.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -43,4 +45,10 @@ public class Project {
   @Setter
   @Temporal(TemporalType.TIMESTAMP)
   private Date createdDate;
+
+  @Getter
+  @Setter
+  @OneToMany(mappedBy = "project")
+  @OrderBy("created_date DESC")
+  private List<Comment> comments = new ArrayList<>();
 }

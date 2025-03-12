@@ -60,7 +60,6 @@ public class ProjectController {
     }
 
     mav.addObject("project", project.get());
-    mav.addObject("comments", commentRepository.findByProjectIdOrderByCreatedDateDesc(id));
     mav.setViewName("detail");
     return mav;
   }

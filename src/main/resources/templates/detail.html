@@ -31,7 +31,7 @@
         <div class="comment-wrap">
           <p class="comment-title">Comments</p>
           <ul class="comment-list">
-            <li th:each="comment: ${comments}">
+            <li th:each="comment: ${project.comments}">
               <div class="comment" th:text="${comment.comment}">This is awesome project!</div>
               <p class="comment-written" th:text="${comment.user.name} + ' | ' + ${#dates.format(comment.createdDate, 'yyyy/MM/dd HH:mm')}">John Smith | 2025/03/01 12:34</p>
             </li>
