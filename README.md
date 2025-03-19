@@ -1,5 +1,6 @@
-# Whistler
-Whistler is a project management system build by Spring/Java
+# TinyPMS
+TinyPMS is a simple project management system.
+This system is build by Spring/Java.
 
 
 ## Specific
