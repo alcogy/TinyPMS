@@ -19,7 +19,7 @@ input[type="submit"]:hover {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: #ccc;
+  background-color: #e5e5e5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,7 +29,7 @@ input[type="submit"]:hover {
   width: 560px;
   padding: 32px;
   border-radius: 8px;
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
 }
 .login-wrap .dialog .login-title {
   margin: 0;

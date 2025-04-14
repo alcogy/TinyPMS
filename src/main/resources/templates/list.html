@@ -15,7 +15,7 @@
         <p class="title">Projects</p>
         <a class="create" href="/project/create">New Project</a>
       </div>
-      <table class="project-table">
+      <table class="project-table" th:if="${projects.size} > 0">
         <thead>
           <tr>
             <th>Project</th>
@@ -51,6 +51,7 @@
           </tr>
         </tbody>    
       </table>
+      <p th:if="${projects.size} == 0">No data. Please create new project.</p>
     </div>
   </main>
 </body>
