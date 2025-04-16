@@ -1,7 +1,7 @@
 # TinyPMS
-TinyPMS is a simple project management system.
-This system is build by Spring/Java.
+TinyPMS is a simple project management system build by Spring boot/Java.
 
+![screen](/readme/screen.png)
 
 ## Specific
 ### Pages

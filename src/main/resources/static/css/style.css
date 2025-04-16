@@ -104,8 +104,8 @@ header.global-header div.sub-menu .user-name {
 }
 header.global-header div.sub-menu button.logout {
   border: 0;
-  background-color: #555;
-  color: #fff;
+  background-color: #ccc;
+  color: #111;
   padding: 4px 8px;
   border-radius: 6px;
   cursor: pointer;

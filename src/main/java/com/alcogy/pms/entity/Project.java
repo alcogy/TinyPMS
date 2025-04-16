@@ -22,10 +22,10 @@ public class Project {
   @Setter
   private String title;
   
-  @Column(nullable = false)
+  @Lob
+  @Column(nullable = false, columnDefinition = "LONGTEXT")
   @Getter
   @Setter
-  @Lob
   private String content;
 
   @Getter
